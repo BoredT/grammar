@@ -11,6 +11,8 @@ IS			(u|U|l|L)*
 #include "y.tab.h"
 
 void count();
+
+int line = 0;
 %}
 
 %%
@@ -109,7 +111,8 @@ L?\"(\\.|[^\\"])*\"	{ count(); return(STRING_LITERAL); }
 "|"			{ count(); return('|'); }
 "?"			{ count(); return('?'); }
 
-[ \t\v\n\f]		{ count(); }
+[ \n]			{ count(); ++line; }
+[ \t\v\f]		{ count(); }
 .			{ /* ignore bad characters */ }
 
 %%
