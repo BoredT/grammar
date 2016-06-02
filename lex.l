@@ -12,7 +12,7 @@ IS			(u|U|l|L)*
 
 void count();
 
-int line = 0;
+int line = 1;
 %}
 
 %%
@@ -111,7 +111,7 @@ L?\"(\\.|[^\\"])*\"	{ count(); return(STRING_LITERAL); }
 "|"			{ count(); return('|'); }
 "?"			{ count(); return('?'); }
 
-[ \n]			{ count(); ++line; }
+[\n]			{ count(); ++line; }
 [ \t\v\f]		{ count(); }
 .			{ /* ignore bad characters */ }
 
