@@ -12,5 +12,8 @@ int main(int argc, char **argv) {
         printf("could not open file: %s\n", argv[1]);
         return 1;
     }
-    yyparse();
+    int res = yyparse();
+    if (!res) {
+        printf("\n\n\nSyntax is valid\n");
+    }
 }
